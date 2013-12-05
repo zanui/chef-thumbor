@@ -2,4 +2,5 @@ rvm:
 #  - 1.9.3
   - 2.0.0
 script:
-  - bundle exec strainer test --except kitchen --fail-fast
+#  - bundle exec strainer test --except kitchen --fail-fast
+  - bundle exec rubocop

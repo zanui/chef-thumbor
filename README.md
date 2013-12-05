@@ -2,6 +2,8 @@ thumbor Cookbook
 ================
 TODO: Enter the cookbook description here.
 
+[![Build Status](https://travis-ci.org/zanui/chef-thumbor.png?branch=master)](https://travis-ci.org/zanui/chef-thumbor)
+
 e.g.
 This cookbook makes your favorite breakfast sandwhich.
 

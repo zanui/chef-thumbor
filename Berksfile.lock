@@ -1,0 +1,19 @@
+{
+  "sources": {
+    "thumbor": {
+      "path": "."
+    },
+    "apt": {
+      "locked_version": "2.3.0"
+    },
+    "minitest-handler": {
+      "locked_version": "1.1.4"
+    },
+    "thumbor_test": {
+      "path": "./test/cookbooks/thumbor_test"
+    },
+    "chef_handler": {
+      "locked_version": "1.1.4"
+    }
+  }
+}

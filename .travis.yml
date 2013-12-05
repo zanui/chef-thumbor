@@ -1,0 +1,7 @@
+rvm:
+  - 1.9.3
+  - 2.0.0
+before_install:
+  - git submodule update --init --recursive
+script:
+  - bundle exec strainer test --except kitchen --fail-fast

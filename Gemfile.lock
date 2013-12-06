@@ -236,7 +236,6 @@ PLATFORMS
 
 DEPENDENCIES
   berkshelf (~> 2.0)
-  chef
   chefspec (~> 3.0)
   foodcritic (~> 3.0)
   kitchen-vagrant

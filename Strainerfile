@@ -1,5 +1,5 @@
 rubocop:    bundle exec rubocop $SANDBOX/$COOKBOOK/recipes $SANDBOX/$COOKBOOK/test
-knife test: bundle exec knife cookbook test $COOKBOOK
-foodcritic: bundle exec foodcritic -I $COOKBOOK/test/foodcritic/* -f any $COOKBOOK
+#knife test: bundle exec knife cookbook test $COOKBOOK
+#foodcritic: bundle exec foodcritic -I $COOKBOOK/test/foodcritic/* -f any $COOKBOOK
 #chefspec:   bundle exec rspec --color
 #kitchen:    bundle exec kitchen test

@@ -8,6 +8,8 @@
 *.bk
 *.bkup
 .kitchen.local.yml
+.coveralls.yml
+.DS_Store
 
 .bundle/
 .cache/
@@ -17,3 +19,4 @@
 bin/
 tmp/
 vendor/
+coverage/

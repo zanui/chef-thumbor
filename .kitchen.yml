@@ -2,7 +2,6 @@
 driver:
   name: vagrant
 
-
 provisioner:
   name: chef_solo
 
@@ -11,12 +10,10 @@ platforms:
     driver_config:
       box: precise-server-cloudimg-amd64-vagrant-disk1
       box_url: http://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box
-#  - name: centos-6.4
 
 suites:
   - name: default
     run_list:
-#      - recipe[thumbor::default]
       - recipe[minitest-handler]
       - recipe[thumbor_test]
     attributes:

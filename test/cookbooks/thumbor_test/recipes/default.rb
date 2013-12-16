@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 #
 # Cookbook Name:: thumbor_test
 # Recipe:: default

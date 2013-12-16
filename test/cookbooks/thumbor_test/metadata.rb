@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 name             'thumbor_test'
 maintainer       'Zanui'
 maintainer_email 'engineering@zanui.com.au'

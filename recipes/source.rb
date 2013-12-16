@@ -2,7 +2,7 @@
 
 #
 # Cookbook Name:: thumbor
-# Recipe:: default
+# Recipe:: source
 #
 # Copyright 2013, Zanui
 #
@@ -18,5 +18,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-package 'webp'

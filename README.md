@@ -60,6 +60,10 @@ Just include `thumbor` in your node's `run_list`:
 }
 ```
 
+#### AWS OpsWorks
+TODO: Write usage instructions
+
+
 Contributing
 ------------
 TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.

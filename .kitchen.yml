@@ -16,4 +16,4 @@ suites:
     run_list:
       - recipe[minitest-handler]
       - recipe[thumbor_test]
-    attributes:
+    attributes: {}

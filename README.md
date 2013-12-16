@@ -16,6 +16,7 @@ Attributes
 ----------
 
 #### thumbor::default
+`node['thumbor']` attributes:
 <table>
   <tr>
     <th>Key</th>
@@ -24,16 +25,16 @@ Attributes
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['thumbor']['processes']</tt></td>
+    <td><tt>processes</tt></td>
     <td>Integer</td>
     <td>Number of thumbor processes running in parallel</td>
     <td><tt>4</tt></td>
   </tr>
   <tr>
-    <td><tt>['thumbor']['base_port']</tt></td>
+    <td><tt>base_port</tt></td>
     <td>Integer</td>
     <td>Base port used to generate the port thumbor processes listen on (e.g. 9000, 9001, ...)</td>
-    <td><tt>4</tt></td>
+    <td><tt>9000</tt></td>
   </tr>
 </table>
 

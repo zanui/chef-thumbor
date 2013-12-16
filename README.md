@@ -1,11 +1,10 @@
 thumbor Cookbook
 ================
-TODO: Enter the cookbook description here.
-
+[![Coverage Status](https://coveralls.io/repos/zanui/chef-thumbor/badge.png)](https://coveralls.io/r/zanui/chef-thumbor)
 [![Build Status](https://travis-ci.org/zanui/chef-thumbor.png?branch=master)](https://travis-ci.org/zanui/chef-thumbor)
 
-e.g.
-This cookbook makes your favorite breakfast sandwhich.
+Installs thumbor from package OR source code and sets up configuration.
+
 
 Requirements
 ------------

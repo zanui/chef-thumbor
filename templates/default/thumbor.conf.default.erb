@@ -1,0 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+<% @options.each do |(key, value)| %>
+<%  value = ['True', 'False', 'None'].include?(value) ? value : value.to_json %>
+<%= "#{key} = #{value}" %>
+<% end %>

@@ -8,18 +8,15 @@ Installs thumbor from package OR source code and sets up configuration.
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
 
-e.g.
 #### packages
-- `toaster` - thumbor needs toaster to brown your bagel.
+- `apt` - thumbor needs toaster to brown your bagel.
 
 Attributes
 ----------
-TODO: List you cookbook attributes here.
 
-e.g.
 #### thumbor::default
+`node['thumbor']` attributes:
 <table>
   <tr>
     <th>Key</th>
@@ -28,12 +25,23 @@ e.g.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['thumbor']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
+    <td><tt>processes</tt></td>
+    <td>Integer</td>
+    <td>Number of thumbor processes running in parallel</td>
+    <td><tt>4</tt></td>
+  </tr>
+  <tr>
+    <td><tt>base_port</tt></td>
+    <td>Integer</td>
+    <td>Base port used to generate the port thumbor processes listen on (e.g. 9000, 9001, ...)</td>
+    <td><tt>9000</tt></td>
   </tr>
 </table>
+
+#### thumbor::source
+
+#### thumbor::monit
+
 
 Usage
 -----
@@ -51,6 +59,10 @@ Just include `thumbor` in your node's `run_list`:
   ]
 }
 ```
+
+#### AWS OpsWorks
+TODO: Write usage instructions
+
 
 Contributing
 ------------

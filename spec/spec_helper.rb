@@ -10,4 +10,3 @@ SimpleCov.start
 require 'chefspec'
 require 'chefspec/berkshelf'
 require 'fauxhai'
-

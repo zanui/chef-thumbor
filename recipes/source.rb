@@ -1,10 +1,8 @@
-# encoding: utf-8
-
 #
 # Cookbook Name:: thumbor
 # Recipe:: source
 #
-# Copyright 2013, Zanui
+# Copyright 2013, Zanui <engineering@zanui.com.au>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.

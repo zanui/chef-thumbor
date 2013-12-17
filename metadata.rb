@@ -21,4 +21,5 @@ attribute 'thumbor/processes',
 attribute 'thumbor/base_port',
   :display_name => 'Number of processes',
   :description => 'Number of thumbor processes running in parallel',
-  :default => '4'
+  :default => '9000'
+

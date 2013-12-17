@@ -109,6 +109,8 @@ GEM
     i18n (0.6.9)
     ipaddress (0.8.0)
     json (1.7.7)
+    kitchen-docker (0.13.0)
+      test-kitchen (>= 1.0.0.rc.2)
     kitchen-vagrant (0.12.0)
       test-kitchen (~> 1.0.0.rc)
     knife-spec (1.0.0)
@@ -264,6 +266,7 @@ DEPENDENCIES
   coveralls
   fauxhai
   foodcritic (~> 3.0)
+  kitchen-docker
   kitchen-vagrant
   knife-spec
   knife-spork (~> 1.0.17)

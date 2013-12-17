@@ -1,6 +1,7 @@
 AllCops:
   Excludes:
     - vendor/**
+    - test/foodcritic/**
 
 AlignParameters:
   Enabled: false

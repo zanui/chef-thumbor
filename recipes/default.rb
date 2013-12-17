@@ -19,4 +19,11 @@
 # limitations under the License.
 #
 
-package 'webp'
+case node['platform_family']
+when 'rhel'
+when 'debian'
+  package 'webp'
+  package 'libwebp-dev'
+when 'mac_os_x'
+when 'windows'
+end

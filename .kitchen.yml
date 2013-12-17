@@ -15,5 +15,10 @@ suites:
   - name: default
     run_list:
       - recipe[minitest-handler]
-      - recipe[thumbor_test]
+      - recipe[thumbor_test::default]
+    attributes: {}
+  - name: source
+    run_list:
+      - recipe[minitest-handler]
+      - recipe[thumbor_test::source]
     attributes: {}

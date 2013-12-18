@@ -1,6 +1,13 @@
 ---
 driver:
   name: vagrant
+driver_config:
+  vagrantfile_erb: Vagrantfile.erb
+  use_cachier_plugin: true
+  require_chef_omnibus: 11.4.4
+  network:
+    - ["forwarded_port", {guest: 80, host: 8080}]
+    - ["private_network", {ip: "192.168.33.33"}]
 
 provisioner:
   name: chef_solo
@@ -18,4 +25,12 @@ suites:
     run_list:
       #- recipe[minitest-handler]
       - recipe[thumbor_test::source]
+    attributes: {}
+  - name: experimental
+    run_list:
+      #- recipe[minitest-handler]
+      - recipe[apt]
+      - recipe[python]
+      - recipe[nginx]
+      - recipe[thumbor::experimental]
     attributes: {}

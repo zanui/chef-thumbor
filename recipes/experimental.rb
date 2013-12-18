@@ -32,8 +32,6 @@ apt_repository 'multiverse' do
   distribution  node['lsb']['codename']
   components    %w{main multiverse}
   deb_src       true
-  action        :add
-  notifies :run, 'execute[apt-get update]', :immediately
 end
 
 required_packages = %w{

@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'strainer'
-gem 'berkshelf',  '~> 2.0'
 gem 'chefspec',   '~> 3.0'
 gem 'fauxhai'
 gem 'foodcritic', '~> 3.0'
@@ -20,6 +18,7 @@ end
 
 group :development do
   gem 'chef'
+  gem 'berkshelf',   '~> 2.0'
   gem 'knife-spork', '~> 1.0.17'
   gem 'knife-spec'
 end

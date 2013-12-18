@@ -3,14 +3,38 @@
     "thumbor": {
       "path": "."
     },
-    "apt": {
-      "locked_version": "2.3.0"
-    },
     "minitest-handler": {
       "locked_version": "1.1.4"
     },
     "thumbor_test": {
       "path": "./test/cookbooks/thumbor_test"
+    },
+    "apt": {
+      "locked_version": "2.3.0"
+    },
+    "python": {
+      "locked_version": "1.4.4"
+    },
+    "build-essential": {
+      "locked_version": "1.4.2"
+    },
+    "yum": {
+      "locked_version": "2.4.4"
+    },
+    "nginx": {
+      "locked_version": "2.0.8"
+    },
+    "bluepill": {
+      "locked_version": "2.3.0"
+    },
+    "rsyslog": {
+      "locked_version": "1.9.0"
+    },
+    "ohai": {
+      "locked_version": "1.1.12"
+    },
+    "runit": {
+      "locked_version": "1.4.6"
     },
     "chef_handler": {
       "locked_version": "1.1.4"

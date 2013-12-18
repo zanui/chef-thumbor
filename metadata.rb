@@ -10,6 +10,8 @@ recipe 'thumbor::default', 'Installs thumbor from globocom Private Package Archi
 recipe 'thumbor::source', 'Installs thumbor from GitHub repository'
 
 depends 'apt'
+depends 'python'
+depends 'nginx'
 
 supports 'ubuntu'
 

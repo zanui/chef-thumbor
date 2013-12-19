@@ -176,10 +176,10 @@ template '/etc/default/thumbor' do
   group  'root'
   mode   '0644'
   notifies :restart, 'service[thumbor]'
-  variables(
-    :instances  => node['thumbor']['processes'],
-    :base_port  => node['thumbor']['base_port'],
-  )
+  variables({
+    :instances => node['thumbor']['processes'],
+    :base_port => node['thumbor']['base_port']
+  })
 end
 
 template '/etc/init.d/thumbor' do
@@ -195,11 +195,11 @@ template '/etc/nginx/conf.d/thumbor.conf' do
   group  'root'
   mode   '0644'
   notifies :restart, 'service[thumbor]'
-  variables(
+  variables({
     :instances    => node['thumbor']['processes'],
     :base_port    => node['thumbor']['base_port'],
     :server_port  => node['nginx']['port'],
-  )
+  })
 end
 
 template '/etc/thumbor.conf' do
@@ -208,9 +208,9 @@ template '/etc/thumbor.conf' do
   group  'root'
   mode   '0644'
   notifies :restart, 'service[thumbor]'
-  variables(
+  variables({
     :options    => node['thumbor']['options']
-  )
+  })
 end
 
 file '/etc/thumbor.key' do

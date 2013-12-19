@@ -26,12 +26,12 @@ require 'rubocop/rake_task'
 
 # Rubocop before rspec so we don't lint vendored cookbooks
 desc "Run all tests except Kitchen (default task)"
-task :unit =>  %w{rubocop foodcritic spec}
+task :unit =>  %w{rubocop foodcritic knife spec}
 task :default => :unit
 
 # Lint the cookbook
 desc "Run linters"
-task :lint => [ :rubocop, :foodcritic ]
+task :lint => [ :rubocop, :foodcritic, :knife ]
 
 # Run the whole shebang
 desc "Run all tests"
@@ -42,6 +42,14 @@ desc 'Run chefspec tests'
 task :spec do
   puts "Running Chefspec tests"
   RSpec::Core::RakeTask.new(:spec)
+end
+
+# Knife test
+desc 'Run knife tests'
+task :knife do
+  current_dir = File.expand_path(File.dirname(__FILE__))
+  cookbook_dir_name = File.basename(current_dir)
+  sh %{bundle exec knife cookbook test #{cookbook_dir_name} -o #{current_dir}/.. -c #{current_dir}/test/.chef/knife.rb}
 end
 
 # Foodcritic
@@ -71,8 +79,8 @@ begin
   require 'kitchen/rake_tasks'
   Kitchen::RakeTasks.new
 
-  desc "Alias for kitchen:all"
-  task :acceptance => "kitchen:all"
+  desc 'Alias for kitchen:all'
+  task :acceptance => 'kitchen:all'
 
 rescue LoadError
   puts ">>>>> Kitchen gem not loaded, omitting tasks" unless ENV['CI']

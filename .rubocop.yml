@@ -13,3 +13,6 @@ LineLength:
   Enabled: false
 MethodLength:
   Max: 30
+# OpsWorks will break when curly braces are used in template variables
+BracesAroundHashParameters:
+  Enabled: false

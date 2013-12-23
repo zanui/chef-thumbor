@@ -1,0 +1,11 @@
+<% (@base_port..@base_port + @instances - 1).each do |port| %>
+check host thumbor with address 127.0.0.1
+    start program = "/etc/init.d/thumbor start"
+    stop program = "/etc/init.d/thumbor stop"
+    if failed port <%= port %> protocol http and request "/healthcheck" then restart
+    if 5 restarts within 5 cycles then stop
+    <% if @send_email_notification_to %>
+    alert <%= send_email_notification_to %> on { restart, stop }
+    <% end %>
+
+<% end %>

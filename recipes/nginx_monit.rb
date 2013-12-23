@@ -23,14 +23,11 @@ service 'monit' do
   action [:enable, :start]
 end
 
-template '/etc/monit/conf.d/thumbor.monitrc' do
-  source 'thumbor.monitrc.erb'
+template '/etc/monit/conf.d/nginx_thumbor.monitrc' do
+  source 'nginx.monitrc.erb'
   owner  'root'
   group  'root'
   mode   '0644'
   notifies :reload, 'service[monit]'
-  variables({
-    :instances => node['thumbor']['processes'],
-    :base_port => node['thumbor']['base_port'],
-  })
+  # variables(:server_port => node['nginx']['port'])
 end

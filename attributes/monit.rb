@@ -1,8 +1,5 @@
 #
-# Cookbook Name:: thumbor
-# Recipe:: monit
-#
-# Copyright 2013, Enrico Stahn <mail@enricostahn.com>
+# Copyright 2013, Enrico Stahn <enrico.stahn@zanui.com.au>
 # Copyright 2013, Zanui <engineering@zanui.com.au>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,17 +15,5 @@
 # limitations under the License.
 #
 
-require 'spec_helper'
-
-describe 'thumbor::monit' do
-  let(:chef_run) { ChefSpec::Runner.new(:platform => 'debian', :version  => '7.0').converge(described_recipe) }
-
-  it 'adds monit configuration file for nginx' do
-    expect(chef_run).to render_file('/etc/monit/conf.d/thumbor.monitrc')
-  end
-
-  it 'reloads monit service' do
-    template = chef_run.template('/etc/monit/conf.d/thumbor.monitrc')
-    expect(template).to notify('service[monit]').to(:reload)
-  end
-end
+default['thumbor']['monit']['enable'] = false
+default['thumbor']['monit']['send_email_notification_to'] = false

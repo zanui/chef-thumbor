@@ -4,12 +4,25 @@ upstream thumbor {
     <% end %>
 }
 
+proxy_cache_path /var/www/thubmor_cache levels=1:2 keys_zone=thumbor_cache:8m max_size=1000m inactive=60m;
+proxy_temp_path /var/www/thumbor_cache/tmp;
+
 server {
     listen <%= @server_port %>;
     server_name localhost;
     merge_slashes off;
 
     location / {
+        # Thumbor Cache
+        # Avoid hitting thumbor when same URL is requested
+        proxy_cache thumbor_cache;
+        # Cache successful responses for 3 minutes
+        proxy_cache_valid 200 302 90s;
+        # Cache missing responses for 1 minute
+        proxy_cache_valid 404     30s;
+        # Tell client if response is from local cache
+        add_header X-Cache-Status $upstream_cache_status;
+
         proxy_pass http://thumbor;
     }
 

@@ -34,3 +34,15 @@ suites:
       - recipe[nginx]
       - recipe[thumbor::experimental]
     attributes: {}
+  - name: experimental-with-proxy
+    run_list:
+      #- recipe[minitest-handler]
+      - recipe[apt]
+      - recipe[python]
+      - recipe[nginx]
+      - recipe[thumbor::experimental]
+    attributes:
+      thumbor:
+        nginx:
+          proxy_cache:
+            enabled: true

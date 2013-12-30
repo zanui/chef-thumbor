@@ -196,9 +196,13 @@ template '/etc/nginx/conf.d/thumbor.conf' do
   mode   '0644'
   notifies :restart, 'service[thumbor]'
   variables({
-    :instances    => node['thumbor']['processes'],
-    :base_port    => node['thumbor']['base_port'],
-    :server_port  => node['nginx']['port'],
+    :instances            => node['thumbor']['processes'],
+    :base_port            => node['thumbor']['base_port'],
+    :server_port          => node['thumbor']['nginx']['port'],
+    :server_name          => node['thumbor']['nginx']['server_name'],
+    :proxy_cache_enabled  => node['thumbor']['nginx']['proxy_cache']['enabled'],
+    :proxy_cache_path     => node['thumbor']['nginx']['proxy_cache']['path'],
+    :proxy_cache_key_zone => node['thumbor']['nginx']['proxy_cache']['key_zone']
   })
 end
 

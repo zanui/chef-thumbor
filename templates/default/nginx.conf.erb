@@ -1,28 +1,34 @@
 upstream thumbor {
     <% (@base_port..@base_port + @instances - 1).each do |port| %>
-        server 127.0.0.1:<%= port %>;
+    server 127.0.0.1:<%= port %>;
     <% end %>
 }
 
-proxy_cache_path /var/www/thubmor_cache levels=1:2 keys_zone=thumbor_cache:8m max_size=1000m inactive=60m;
-proxy_temp_path /var/www/thumbor_cache/tmp;
+<% if @proxy_cache_enabled %>
+proxy_cache_path <%= @proxy_cache_path %> levels=1:2 keys_zone=<%= @proxy_cache_key_zone %>:8m max_size=1000m inactive=60m;
+<% end %>
 
 server {
     listen <%= @server_port %>;
-    server_name localhost;
+    server_name <%= @server_name %>;
+
     merge_slashes off;
 
     location / {
+        <% if @proxy_cache_enabled %>
         # Thumbor Cache
-        # Avoid hitting thumbor when same URL is requested
-        proxy_cache thumbor_cache;
+        # Avoid hitting thumbor when same URL is requested multiple times
+        proxy_cache <%= @proxy_cache_key_zone %>;
+
         # Cache successful responses for 3 minutes
         proxy_cache_valid 200 302 90s;
+
         # Cache missing responses for 1 minute
-        proxy_cache_valid 404     30s;
+        proxy_cache_valid 404 30s;
+
         # Tell client if response is from local cache
         add_header X-Cache-Status $upstream_cache_status;
-
+        <% end %>
         proxy_pass http://thumbor;
     }
 

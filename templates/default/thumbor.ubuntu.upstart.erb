@@ -18,3 +18,10 @@ pre-start script
         start thumbor-worker p=$p
     done
 end script
+
+post-stop script
+    [ -r /etc/default/thumbor ] && . /etc/default/thumbor
+    for p in `echo ${port} | tr ',' ' '`; do
+        stop thumbor-worker p=$p
+    done
+end script

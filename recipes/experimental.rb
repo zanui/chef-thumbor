@@ -182,12 +182,12 @@ template '/etc/default/thumbor' do
   })
 end
 
-template '/etc/init.d/thumbor' do
-  source 'thumbor.init.erb'
-  owner  'root'
-  group  'root'
-  mode   '0755'
-end
+# template '/etc/init.d/thumbor' do
+#   source 'thumbor.init.erb'
+#   owner  'root'
+#   group  'root'
+#   mode   '0755'
+# end
 
 template '/etc/nginx/conf.d/thumbor.conf' do
   source 'nginx.conf.erb'

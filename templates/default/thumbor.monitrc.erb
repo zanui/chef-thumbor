@@ -4,7 +4,6 @@ check host thumbor with address 127.0.0.1
     <% (@base_port..@base_port + @instances - 1).each do |port| %>
     if failed port <%= port %> protocol http and request "/healthcheck" then restart
     <% end %>
-    if 5 restarts within 5 cycles then stop
     <% if @send_email_notification_to %>
     alert <%= send_email_notification_to %> on { restart, stop }
     <% end %>

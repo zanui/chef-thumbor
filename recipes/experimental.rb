@@ -231,6 +231,7 @@ python_pip 'git+git://github.com/zanui/thumbor_aws.git@webp' do
 end
 
 service 'thumbor' do
+  provider Chef::Provider::Service::Upstart
   supports :restart => true, :start => true, :stop => true, :reload => true
   action   [:enable, :start]
 end

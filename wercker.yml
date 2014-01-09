@@ -12,3 +12,8 @@ build:
     - script:
         name: unit
         code: bundle exec rake unit
+
+  after-steps:
+    - hipchat-notify:
+        token: $HIPCHAT_TOKEN
+        room-id: $HIPCHAT_ROOM_ID

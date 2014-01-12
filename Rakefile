@@ -27,12 +27,13 @@ require 'versionomy'
 
 # Bump version number
 desc 'Bump version number'
-task :bump do
+task :bump, :type do |t, args|
+  args.with_defaults(:type => :tiny)
   content = File.read('metadata.rb')
 
   version_pattern = /(version.*?')(.*?)(')/
   current_version = content.match(version_pattern)[2]
-  next_version    = Versionomy.parse($2).bump(:tiny).to_s
+  next_version    = Versionomy.parse(Regexp.last_match[2]).bump(args.type).to_s
 
   File.write('metadata.rb', content.gsub(version_pattern, "\\1#{next_version}\\3"))
 

@@ -1,4 +1,6 @@
 AllCops:
+  Includes:
+    - Rakefile
   Excludes:
     - vendor/**
     - test/foodcritic/**

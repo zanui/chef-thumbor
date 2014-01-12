@@ -21,8 +21,34 @@ require 'rubygems'
 require 'foodcritic'
 require 'rspec/core/rake_task'
 require 'rubocop/rake_task'
+require 'versionomy'
 
 # General tasks
+
+# Bump version number
+desc 'Bump version number'
+task :bump do
+  content = File.read('metadata.rb')
+
+  version_pattern = /(version.*?')(.*?)(')/
+  current_version = content.match(version_pattern)[2]
+  next_version    = Versionomy.parse($2).bump(:tiny).to_s
+
+  File.write('metadata.rb', content.gsub(version_pattern, "\\1#{next_version}\\3"))
+
+  puts "Successfully bumped from #{current_version} to #{next_version}!"
+end
+
+desc 'Upload cookbook to community site'
+task :upload do
+  exec 'knife cookbook site share "thumbor" "Applications" -z'
+end
+
+desc 'Release version'
+task :release do
+  # check if current version is already released
+  # bump, commit, tag, push, upload
+end
 
 # Rubocop before rspec so we don't lint vendored cookbooks
 desc 'Run all tests except Kitchen (default task)'

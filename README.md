@@ -2,6 +2,7 @@ thumbor Cookbook
 ================
 [![Coverage Status](https://coveralls.io/repos/zanui/chef-thumbor/badge.png)](https://coveralls.io/r/zanui/chef-thumbor)
 [![Build Status](https://travis-ci.org/zanui/chef-thumbor.png?branch=master)](https://travis-ci.org/zanui/chef-thumbor)
+[![wercker status](https://app.wercker.com/status/bbda18948d7ab5346ec3be8a1eaa472b/m "wercker status")](https://app.wercker.com/project/bykey/bbda18948d7ab5346ec3be8a1eaa472b)
 
 Installs thumbor from package OR source code and sets up configuration.
 
@@ -79,7 +80,7 @@ e.g.
 License and Authors
 -------------------
 - Author:: [Enrico Stahn](https://github.com/estahn) (<enrico.stahn@zanui.com.au>)
-- Author:: [Enrico Baioni](https://github.com/ebaioni) (<enrico.baioni@zanui.com.au>)
+- Author:: [Enrico Baioni](https://github.com/ebaioni) (<enrico.baioni@gmail.com>)
 
 ```text
 Copyright:: 2013 Zanui, Internet Services Australia 3 Pty Limited

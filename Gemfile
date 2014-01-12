@@ -6,6 +6,7 @@ gem 'fauxhai'
 gem 'foodcritic', '~> 3.0'
 gem 'rubocop',    '~> 0.15'
 gem 'rake'
+gem 'versionomy'
 
 group :integration do
   gem 'test-kitchen'

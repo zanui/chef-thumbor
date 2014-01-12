@@ -80,7 +80,7 @@ e.g.
 License and Authors
 -------------------
 - Author:: [Enrico Stahn](https://github.com/estahn) (<enrico.stahn@zanui.com.au>)
-- Author:: [Enrico Baioni](https://github.com/ebaioni) (<enrico.baioni@zanui.com.au>)
+- Author:: [Enrico Baioni](https://github.com/ebaioni) (<enrico.baioni@gmail.com>)
 
 ```text
 Copyright:: 2013 Zanui, Internet Services Australia 3 Pty Limited

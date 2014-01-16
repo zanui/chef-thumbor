@@ -31,8 +31,8 @@ default['thumbor']['storage']['type'] = 'file'
 default['thumbor']['options'] = {}
 
 # AWS CONFIG
-default['thumbor']['options']['AWS_ACCESS_KEY'] = 'AKIAI4KPHVXBKZKDTJMQ'
-default['thumbor']['options']['AWS_SECRET_KEY'] = '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'
+default['thumbor']['options']['AWS_ACCESS_KEY'] = 'XXXXXX'
+default['thumbor']['options']['AWS_SECRET_KEY'] = 'XXXXXX'
 default['thumbor']['options']['S3_ALLOWED_BUCKETS'] = 'zanui-thumbor'
 default['thumbor']['options']['STORAGE_BUCKET'] = 'zanui-thumbor'
 default['thumbor']['options']['S3_LOADER_BUCKET'] = 'zanui-thumbor'

@@ -137,7 +137,7 @@ service 'redis-server' do
   action   [:enable, :start]
 end
 
-python_pip 'git+git://github.com/globocom/thumbor.git' do
+python_pip "git+git://github.com/globocom/thumbor.git@#{node['thumbor']['version']}" do
   action :install
   notifies :restart, 'service[thumbor]'
 end

@@ -22,6 +22,7 @@ default['thumbor']['nginx']['proxy_cache']['enabled'] = false
 default['thumbor']['nginx']['proxy_cache']['path'] = '/var/www/thumbor_cache'
 default['thumbor']['nginx']['proxy_cache']['key_zone'] = 'thumbor_cache'
 
+default['thumbor']['version'] = 'master'
 default['thumbor']['processes'] = 1
 default['thumbor']['base_port'] = 9000
 default['thumbor']['key'] = 'testkey'

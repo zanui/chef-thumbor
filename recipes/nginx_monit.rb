@@ -25,9 +25,9 @@ end
 
 template '/etc/monit/conf.d/nginx_thumbor.monitrc' do
   source 'nginx.monitrc.erb'
-  owner  'root'
-  group  'root'
-  mode   '0644'
+  owner 'root'
+  group 'root'
+  mode '0644'
   notifies :reload, 'service[monit]'
   # variables(:server_port => node['nginx']['port'])
 end

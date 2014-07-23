@@ -27,7 +27,7 @@ require 'versionomy'
 
 # Bump version number
 desc 'Bump version number'
-task :bump, :type do |t, args|
+task :bump, :type do |_t, args|
   args.with_defaults(:type => :tiny)
   content = File.read('metadata.rb')
 
@@ -53,7 +53,7 @@ end
 
 # Rubocop before rspec so we don't lint vendored cookbooks
 desc 'Run all tests except Kitchen (default task)'
-task :unit =>  %w{rubocop foodcritic knife spec}
+task :unit =>  %w(rubocop foodcritic knife spec)
 task :default => :unit
 
 # Lint the cookbook
@@ -76,7 +76,7 @@ desc 'Run knife tests'
 task :knife do
   current_dir = File.expand_path(File.dirname(__FILE__))
   cookbook_dir_name = File.basename(current_dir)
-  sh %{bundle exec knife cookbook test #{cookbook_dir_name} -o #{current_dir}/.. -c #{current_dir}/test/.chef/knife.rb}
+  sh %(bundle exec knife cookbook test #{cookbook_dir_name} -o #{current_dir}/.. -c #{current_dir}/test/.chef/knife.rb)
 end
 
 # Foodcritic
@@ -89,7 +89,7 @@ task :foodcritic do
         :fail_tags => ['any'],
         :include_rules => ['test/foodcritic/customink', 'test/foodcritic/etsy']
       }
-    puts 'done.'
+      puts 'done.'
     end
   else
     puts "WARN: foodcritic run is skipped as Ruby #{RUBY_VERSION} is < 1.9.2."
@@ -99,7 +99,7 @@ end
 # Rubocop
 desc 'Run Rubocop lint checks'
 task :rubocop do
-  Rubocop::RakeTask.new
+  RuboCop::RakeTask.new
 end
 
 begin

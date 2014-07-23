@@ -25,12 +25,12 @@ end
 
 template '/etc/monit/conf.d/thumbor.monitrc' do
   source 'thumbor.monitrc.erb'
-  owner  'root'
-  group  'root'
-  mode   '0644'
+  owner 'root'
+  group 'root'
+  mode '0644'
   notifies :reload, 'service[monit]'
   variables({
-    :instances => node['thumbor']['processes'],
-    :base_port => node['thumbor']['base_port'],
-  })
+              :instances => node['thumbor']['processes'],
+              :base_port => node['thumbor']['base_port']
+            })
 end

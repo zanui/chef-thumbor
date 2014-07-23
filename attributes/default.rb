@@ -130,21 +130,21 @@ default['thumbor']['options']['AUTO_WEBP'] = 'True'
 # MIXED_STORAGE_DETECTOR_STORAGE = 'thumbor.storages.no_storage'
 
 default['thumbor']['options']['FILTERS'] = [
-    'thumbor.filters.brightness',
-    'thumbor.filters.contrast',
-    'thumbor.filters.rgb',
-    'thumbor.filters.round_corner',
-    'thumbor.filters.quality',
-    'thumbor.filters.noise',
-    'thumbor.filters.watermark',
-    'thumbor.filters.equalize',
-    'thumbor.filters.fill',
-    'thumbor.filters.sharpen',
-    'thumbor.filters.strip_icc',
-    'thumbor.filters.frame',
+  'thumbor.filters.brightness',
+  'thumbor.filters.contrast',
+  'thumbor.filters.rgb',
+  'thumbor.filters.round_corner',
+  'thumbor.filters.quality',
+  'thumbor.filters.noise',
+  'thumbor.filters.watermark',
+  'thumbor.filters.equalize',
+  'thumbor.filters.fill',
+  'thumbor.filters.sharpen',
+  'thumbor.filters.strip_icc',
+  'thumbor.filters.frame',
 
-    # can only be applied if there are already points for the image being served
-    # this means that either you are using the local face detector or the image
-    # has already went through remote detection
-    # 'thumbor.filters.redeye',
+  # can only be applied if there are already points for the image being served
+  # this means that either you are using the local face detector or the image
+  # has already went through remote detection
+  # 'thumbor.filters.redeye',
 ]

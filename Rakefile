@@ -22,6 +22,7 @@ require 'foodcritic'
 require 'rspec/core/rake_task'
 require 'rubocop/rake_task'
 require 'versionomy'
+require 'stove/rake_task'
 
 # General tasks
 
@@ -38,11 +39,6 @@ task :bump, :type do |_t, args|
   File.write('metadata.rb', content.gsub(version_pattern, "\\1#{next_version}\\3"))
 
   puts "Successfully bumped from #{current_version} to #{next_version}!"
-end
-
-desc 'Upload cookbook to community site'
-task :upload do
-  exec 'knife cookbook site share "thumbor" "Applications" -z'
 end
 
 desc 'Release version'
@@ -105,6 +101,7 @@ end
 begin
   require 'kitchen/rake_tasks'
   Kitchen::RakeTasks.new
+  Stove::RakeTask.new
 
   desc 'Alias for kitchen:all'
   task :acceptance => 'kitchen:all'

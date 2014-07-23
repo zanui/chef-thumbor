@@ -156,6 +156,11 @@ python_pip 'git+git://github.com/globocom/remotecv.git' do
   notifies :restart, 'service[thumbor]'
 end
 
+python_pip 'graphicsmagick-engine' do
+  action :install
+  notifies :restart, 'service[thumbor]'
+end
+
 template '/etc/init/thumbor.conf' do
   source 'thumbor.ubuntu.upstart.erb'
   owner  'root'

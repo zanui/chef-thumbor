@@ -10,34 +10,37 @@
       "path": "./test/cookbooks/thumbor_test"
     },
     "apt": {
-      "locked_version": "2.3.0"
+      "locked_version": "2.4.0"
     },
     "python": {
-      "locked_version": "1.4.4"
-    },
-    "build-essential": {
-      "locked_version": "1.4.2"
-    },
-    "yum": {
-      "locked_version": "2.4.4"
-    },
-    "nginx": {
-      "locked_version": "2.0.8"
-    },
-    "bluepill": {
-      "locked_version": "2.3.0"
-    },
-    "rsyslog": {
-      "locked_version": "1.9.0"
-    },
-    "ohai": {
-      "locked_version": "1.1.12"
-    },
-    "runit": {
       "locked_version": "1.4.6"
     },
+    "build-essential": {
+      "locked_version": "2.0.4"
+    },
+    "yum-epel": {
+      "locked_version": "0.3.6"
+    },
+    "yum": {
+      "locked_version": "3.2.2"
+    },
+    "nginx": {
+      "locked_version": "2.7.4"
+    },
+    "bluepill": {
+      "locked_version": "2.3.1"
+    },
+    "rsyslog": {
+      "locked_version": "1.12.2"
+    },
+    "ohai": {
+      "locked_version": "2.0.1"
+    },
+    "runit": {
+      "locked_version": "1.5.10"
+    },
     "chef_handler": {
-      "locked_version": "1.1.4"
+      "locked_version": "1.1.6"
     }
   }
 }

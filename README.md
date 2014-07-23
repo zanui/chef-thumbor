@@ -2,7 +2,6 @@ thumbor Cookbook
 ================
 [![Coverage Status](https://coveralls.io/repos/zanui/chef-thumbor/badge.png)](https://coveralls.io/r/zanui/chef-thumbor)
 [![Build Status](https://travis-ci.org/zanui/chef-thumbor.png?branch=master)](https://travis-ci.org/zanui/chef-thumbor)
-[![wercker status](https://app.wercker.com/status/bbda18948d7ab5346ec3be8a1eaa472b/m "wercker status")](https://app.wercker.com/project/bykey/bbda18948d7ab5346ec3be8a1eaa472b)
 
 Installs thumbor from package OR source code and sets up configuration.
 

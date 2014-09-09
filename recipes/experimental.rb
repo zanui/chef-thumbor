@@ -195,8 +195,8 @@ end
 # end
 
 directory node['thumbor']['nginx']['proxy_cache']['path'] do
-  owner 'www-data'
-  group 'www-data'
+  owner node['nginx']['user']
+  group node['nginx']['group']
   mode '0700'
   action :create
   recursive true

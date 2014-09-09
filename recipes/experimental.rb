@@ -194,14 +194,13 @@ end
 #   mode   '0755'
 # end
 
-if node['thumbor']['nginx']['proxy_cache']['path']
-  directory node['thumbor']['nginx']['proxy_cache']['path'] do
-    owner       'www-data'
-    group       'www-data'
-    mode        '0700'
-    action      :create
-    recursive   true
-  end
+directory node['thumbor']['nginx']['proxy_cache']['path'] do
+  owner 'www-data'
+  group 'www-data'
+  mode '0700'
+  action :create
+  recursive true
+  not_if node['thumbor']['nginx']['proxy_cache']['path'].nil?
 end
 
 template '/etc/nginx/conf.d/thumbor.conf' do

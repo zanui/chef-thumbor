@@ -12,6 +12,9 @@ recipe 'thumbor::source', 'Installs thumbor from GitHub repository'
 depends 'apt'
 depends 'python'
 depends 'nginx'
+depends 'ulimit'
+depends 'monit-ng'
+depends 'redisio'
 
 supports 'ubuntu'
 

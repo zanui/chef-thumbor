@@ -1,9 +1,8 @@
 #
 # Cookbook Name:: thumbor
-# Recipe:: default
+# Recipe:: user
 #
-# Copyright 2013, Enrico Stahn <mail@enricostahn.com>
-# Copyright 2013, Zanui <engineering@zanui.com.au>
+# Copyright 2014, Virender Khatri
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,18 +17,18 @@
 # limitations under the License.
 #
 
-include_recipe "python"
-include_recipe "thumbor::user"
-include_recipe "thumbor::install"
-case node['thumbor']['proxy']
-when 'nginx'
-  include_recipe "thumbor::nginx"
-when 'haproxy'
-  # Experimental, not yet developed
-  include_recipe "thumbor::haproxy"
-else
-  include_recipe "thumbor::nginx"
+# NEED TO CHECK IF user_home directory resource needs to call first
+
+group node['thumbor']['group'] do
+  action :create
+  only_if { node['thumbor']['setup_user'] }
 end
-include_recipe "thumbor::redis"
-include_recipe "thumbor::config"
-include_recipe "thumbor::monit" if node['thumbor']['monit']['enable']
+
+user node['thumbor']['user'] do
+  home    node['thumbor']['user_home'] if node['thumbor']['user_home']
+  shell   "/bin/bash"
+  gid     node['thumbor']['group']
+  action  :create
+  only_if { node['thumbor']['setup_user'] }
+end
+

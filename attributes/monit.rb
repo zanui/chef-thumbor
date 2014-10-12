@@ -16,4 +16,28 @@
 #
 
 default['thumbor']['monit']['enable'] = false
-default['thumbor']['monit']['send_email_notification_to'] = false
+
+=begin
+
+default['monit']['config']['mail_subject'] = 'monit alert - $EVENT $SERVICE on $HOST'
+default['monit']['config']['mail_message'] = <<-EOT
+Hello,
+
+Action: Monit $SERVICE $ACTION occured on $HOST.
+
+Time: $DATE.
+
+Reason: $DESCRIPTION.
+
+Yours sincerely,
+monit
+EOT
+
+default['monit']['config']['subscribers'] = [
+  # email notifier
+  {
+    'name' => 'root@localdomain.local',
+    'subscriptions' => %w( nonexist timeout resource icmp connection )
+  }
+]
+=end

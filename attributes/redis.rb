@@ -1,9 +1,8 @@
 #
 # Cookbook Name:: thumbor
-# Recipe:: default
+# Attribute:: redis
 #
-# Copyright 2013, Enrico Stahn <mail@enricostahn.com>
-# Copyright 2013, Zanui <engineering@zanui.com.au>
+# Copyright 2014, Virender Khatri
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,18 +17,9 @@
 # limitations under the License.
 #
 
-include_recipe "python"
-include_recipe "thumbor::user"
-include_recipe "thumbor::install"
-case node['thumbor']['proxy']
-when 'nginx'
-  include_recipe "thumbor::nginx"
-when 'haproxy'
-  # Experimental, not yet developed
-  include_recipe "thumbor::haproxy"
-else
-  include_recipe "thumbor::nginx"
-end
-include_recipe "thumbor::redis"
-include_recipe "thumbor::config"
-include_recipe "thumbor::monit" if node['thumbor']['monit']['enable']
+# keeping redis configuration minimal.
+# modify attributes for cookbook redisio as per requirement
+
+# disable nginx default vhost
+node.default['redisio']['version'] = '2.8.17'
+

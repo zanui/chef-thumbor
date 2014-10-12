@@ -18,18 +18,18 @@
 # limitations under the License.
 #
 
-include_recipe "python"
-include_recipe "thumbor::user"
-include_recipe "thumbor::install"
+include_recipe 'python'
+include_recipe 'thumbor::user'
+include_recipe 'thumbor::install'
 case node['thumbor']['proxy']
 when 'nginx'
-  include_recipe "thumbor::nginx"
+  include_recipe 'thumbor::nginx'
 when 'haproxy'
   # Experimental, not yet developed
-  include_recipe "thumbor::haproxy"
+  include_recipe 'thumbor::haproxy'
 else
-  include_recipe "thumbor::nginx"
+  include_recipe 'thumbor::nginx'
 end
-include_recipe "thumbor::redis"
-include_recipe "thumbor::config"
-include_recipe "thumbor::monit" if node['thumbor']['monit']['enable']
+include_recipe 'thumbor::redis'
+include_recipe 'thumbor::config'
+include_recipe 'thumbor::monit' if node['thumbor']['monit']['enable']

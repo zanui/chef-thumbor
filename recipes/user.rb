@@ -25,10 +25,9 @@ group node['thumbor']['group'] do
 end
 
 user node['thumbor']['user'] do
-  home    node['thumbor']['user_home'] if node['thumbor']['user_home']
-  shell   "/bin/bash"
-  gid     node['thumbor']['group']
-  action  :create
+  home node['thumbor']['user_home'] if node['thumbor']['user_home']
+  shell '/bin/bash'
+  gid node['thumbor']['group']
+  action :create
   only_if { node['thumbor']['setup_user'] }
 end
-

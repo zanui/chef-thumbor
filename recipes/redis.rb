@@ -18,6 +18,6 @@
 #
 
 if node['thumbor']['setup_redis']
-  include_recipe "redisio::install"
-  include_recipe "redisio::enable"
+  include_recipe 'redisio::install'
+  include_recipe 'redisio::enable'
 end

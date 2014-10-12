@@ -20,6 +20,4 @@
 # keeping redis configuration minimal.
 # modify attributes for cookbook redisio as per requirement
 
-# disable nginx default vhost
 node.default['redisio']['version'] = '2.8.17'
-

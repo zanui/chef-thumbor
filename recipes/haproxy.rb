@@ -17,20 +17,17 @@
 # limitations under the License.
 #
 
-=begin
-include_recipe "haproxy"
+# include_recipe 'haproxy'
 
-template node['thumbor']['haproxy']['config_file'] do
-  cookbook  node['thumbor']['haproxy']['cookbook']
-  source    node['thumbor']['haproxy']['template']
-  owner     'root'
-  group     'root'
-  mode      '0644'
-  variables ( node['thumbor']['haproxy']['variables'].empty? ? {
-    :instances            => node['thumbor']['processes'],
-    :base_port            => node['thumbor']['base_port'],
-    :server_port          => node['thumbor']['haproxy']['port'],
-  } : node['thumbor']['haproxy']['variables'])
-end
-
-=end
+# template node['thumbor']['haproxy']['config_file'] do
+#  cookbook node['thumbor']['haproxy']['cookbook']
+#  source node['thumbor']['haproxy']['template']
+#  owner 'root'
+#  group 'root'
+#  mode '0644'
+#  variables ( node['thumbor']['haproxy']['variables'].empty? ? { :instances => node['thumbor']['processes'],
+#                                                                 :base_port            => node['thumbor']['base_port'],
+#                                                                 :server_port          => node['thumbor']['haproxy']['port'],
+#                                                               } : node['thumbor']['haproxy']['variables']
+#            )
+# end

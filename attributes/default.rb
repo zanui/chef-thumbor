@@ -49,7 +49,7 @@ default['thumbor']['user_home']       = nil
 
 # thumbor process limits
 default['thumbor']['limits']['memlock']    = 'unlimited'
-default['thumbor']['limits']['nofile']     = 48000
+default['thumbor']['limits']['nofile']     = 48_000
 default['thumbor']['limits']['nproc']      = 'unlimited'
 
 # configuration options:
@@ -57,12 +57,12 @@ default['thumbor']['limits']['nproc']      = 'unlimited'
 default['thumbor']['options'] = {}
 
 # AWS CONFIG
-#default['thumbor']['options']['AWS_ACCESS_KEY'] = 'XXXXXX'
-#default['thumbor']['options']['AWS_SECRET_KEY'] = 'XXXXXX'
-#default['thumbor']['options']['S3_ALLOWED_BUCKETS'] = 'zanui-thumbor'
-#default['thumbor']['options']['STORAGE_BUCKET'] = 'zanui-thumbor'
-#default['thumbor']['options']['S3_LOADER_BUCKET'] = 'zanui-thumbor'
-#default['thumbor']['options']['RESULT_STORAGE_BUCKET'] = 'zanui-thumbor'
+# default['thumbor']['options']['AWS_ACCESS_KEY'] = 'XXXXXX'
+# default['thumbor']['options']['AWS_SECRET_KEY'] = 'XXXXXX'
+# default['thumbor']['options']['S3_ALLOWED_BUCKETS'] = 'zanui-thumbor'
+# default['thumbor']['options']['STORAGE_BUCKET'] = 'zanui-thumbor'
+# default['thumbor']['options']['S3_LOADER_BUCKET'] = 'zanui-thumbor'
+# default['thumbor']['options']['RESULT_STORAGE_BUCKET'] = 'zanui-thumbor'
 
 # SQS SETTINGS
 # default['thumbor']['options']['SQS_QUEUE_KEY_ID'] = ''

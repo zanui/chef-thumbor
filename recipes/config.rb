@@ -26,70 +26,69 @@ end
 
 # thumbor storage directory
 directory node['thumbor']['options']['FILE_STORAGE_ROOT_PATH'] do
-  owner     node['thumbor']['user']
-  group     node['thumbor']['group']
-  mode      0755
+  owner node['thumbor']['user']
+  group node['thumbor']['group']
+  mode 0755
   recursive true
-  notifies  :restart, 'service[thumbor]', :delayed if node['thumbor']['notify_restart']
+  notifies :restart, 'service[thumbor]', :delayed if node['thumbor']['notify_restart']
 end
 
 # thumbor result storage directory
 directory node['thumbor']['options']['RESULT_STORAGE_FILE_STORAGE_ROOT_PATH'] do
-  owner     node['thumbor']['user']
-  group     node['thumbor']['group']
-  mode      0755
+  owner node['thumbor']['user']
+  group node['thumbor']['group']
+  mode 0755
   recursive true
-  notifies  :restart, 'service[thumbor]', :delayed if node['thumbor']['notify_restart']
+  notifies :restart, 'service[thumbor]', :delayed if node['thumbor']['notify_restart']
 end
 
-ruby_block "require_pam_limits.so" do
+ruby_block 'require_pam_limits.so' do
   block do
-    fe = Chef::Util::FileEdit.new("/etc/pam.d/su")
-    fe.search_file_replace_line(/# session    required   pam_limits.so/, "session    required   pam_limits.so")
+    fe = Chef::Util::FileEdit.new('/etc/pam.d/su')
+    fe.search_file_replace_line(/# session    required   pam_limits.so/, 'session    required   pam_limits.so')
     fe.write_file
   end
 end
 
 # thumbor upstart init configuration files
 template '/etc/init/thumbor.conf' do
-  source  'thumbor.ubuntu.upstart.erb'
-  owner   'root'
-  group   'root'
-  mode    '0755'
-  notifies  :restart, 'service[thumbor]', :delayed if node['thumbor']['notify_restart']
-  only_if do node['thumbor']['init_style'] == 'upstart' end
+  source 'thumbor.ubuntu.upstart.erb'
+  owner 'root'
+  group 'root'
+  mode '0755'
+  notifies :restart, 'service[thumbor]', :delayed if node['thumbor']['notify_restart']
+  only_if { node['thumbor']['init_style'] == 'upstart' }
 end
 
 template '/etc/init/thumbor-worker.conf' do
-  source  'thumbor.worker.erb'
-  owner   'root'
-  group   'root'
-  mode    '0755'
-  notifies  :restart, 'service[thumbor]', :delayed if node['thumbor']['notify_restart']
-  only_if do node['thumbor']['init_style'] == 'upstart' end
+  source 'thumbor.worker.erb'
+  owner 'root'
+  group 'root'
+  mode '0755'
+  notifies :restart, 'service[thumbor]', :delayed if node['thumbor']['notify_restart']
+  only_if { node['thumbor']['init_style'] == 'upstart' }
 end
 
 template '/etc/default/thumbor' do
-  source  'thumbor.default.erb'
-  owner   'root'
-  group   'root'
-  mode    '0644'
-  notifies  :restart, 'service[thumbor]', :delayed if node['thumbor']['notify_restart']
-  variables({
-    :instances => node['thumbor']['processes'],
-    :base_port => node['thumbor']['base_port']
-  })
-  only_if do node['thumbor']['init_style'] == 'upstart' end
+  source 'thumbor.default.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
+  notifies :restart, 'service[thumbor]', :delayed if node['thumbor']['notify_restart']
+  variables({ :instances => node['thumbor']['processes'],
+              :base_port => node['thumbor']['base_port']
+            })
+  only_if { node['thumbor']['init_style'] == 'upstart' }
 end
 
 # thumbor init.d configuration file
 template '/etc/init.d/thumbor' do
   source 'thumbor.init.erb'
-  owner  'root'
-  group  'root'
-  mode   '0755'
-  notifies  :restart, 'service[thumbor]', :delayed if node['thumbor']['notify_restart']
-  only_if do node['thumbor']['init_style'] == 'initd'  end
+  owner 'root'
+  group 'root'
+  mode '0755'
+  notifies :restart, 'service[thumbor]', :delayed if node['thumbor']['notify_restart']
+  only_if { node['thumbor']['init_style'] == 'initd' }
 end
 
 # thumbor key file
@@ -98,7 +97,7 @@ file '/etc/thumbor.key' do
   owner 'root'
   group 'root'
   mode '0644'
-  notifies  :restart, 'service[thumbor]', :delayed if node['thumbor']['notify_restart']
+  notifies :restart, 'service[thumbor]', :delayed if node['thumbor']['notify_restart']
 end
 
 # thumbor configuration file
@@ -107,10 +106,8 @@ template '/etc/thumbor.conf' do
   owner 'root'
   group 'root'
   mode '0644'
-  notifies  :restart, 'service[thumbor]', :delayed if node['thumbor']['notify_restart']
-  variables({
-    :options    => node['thumbor']['options']
-  })
+  notifies :restart, 'service[thumbor]', :delayed if node['thumbor']['notify_restart']
+  variables({ :options => node['thumbor']['options'] })
 end
 
 # thumbor service

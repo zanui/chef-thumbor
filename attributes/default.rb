@@ -32,7 +32,6 @@ default['thumbor']['conf_file'] = '/etc/thumbor.conf'
 default['thumbor']['key_file'] = '/etc/thumbor.key'
 
 default['thumbor']['proxy'] = 'nginx' # options: nginx, haproxy(experimental)
-default['thumbor']['upgrade'] = false # upgrade thumbor
 
 # notify restart to service
 default['thumbor']['notify_restart'] = true

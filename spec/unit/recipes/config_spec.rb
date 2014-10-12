@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: thumbor
-# Recipe:: monit
+# Recipe:: config
 #
 # Copyright 2013, Enrico Stahn <mail@enricostahn.com>
 # Copyright 2013, Zanui <engineering@zanui.com.au>
@@ -20,15 +20,23 @@
 
 require 'spec_helper'
 
-describe 'thumbor::monit' do
+describe 'thumbor::config' do
   let(:chef_run) { ChefSpec::Runner.new(:platform => 'debian', :version  => '7.0').converge(described_recipe) }
 
-  it 'adds monit configuration file for nginx' do
-    expect(chef_run).to render_file('/etc/monit/conf.d/thumbor.monitrc')
+  it 'adds thumbor configuration file' do
+    expect(chef_run).to render_file('/etc/thumbor.conf')
   end
 
-  it 'reloads monit service' do
-    template = chef_run.template('/etc/monit/conf.d/thumbor.monitrc')
-    expect(template).to notify('service[monit]').to(:reload)
+  it 'adds init thumbor worker configuration file' do
+    expect(chef_run).to render_file('/etc/init/thumbor-worker.conf')
   end
+
+  it 'adds init thumbor configuration file' do
+    expect(chef_run).to render_file('/etc/init/thumbor.conf')
+  end
+
+  it 'adds thumbor key configuration file' do
+    expect(chef_run).to render_file('/etc/thumbor.key')
+  end
+
 end

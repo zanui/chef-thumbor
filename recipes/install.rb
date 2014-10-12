@@ -76,7 +76,6 @@ case node['thumbor']['install_method']
 when 'pip'
   python_pip 'thumbor' do
     version node['thumbor']['version']
-    action :upgrade if node['thumbor']['upgrade']
     notifies :restart, 'service[thumbor]', :delayed if node['thumbor']['notify_restart']
   end
   # python_pip "git+git://github.com/globocom/thumbor.git@#{node['thumbor']['version']}#egg=thumbor"
@@ -86,7 +85,6 @@ when 'package'
   case node['platform_family']
   when 'debian'
     package 'thumbor' do
-      action :upgrade if node['thumbor']['upgrade']
       notifies :restart, 'service[thumbor]', :delayed if node['thumbor']['notify_restart']
     end
   else

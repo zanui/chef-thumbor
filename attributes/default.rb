@@ -132,11 +132,13 @@ default['thumbor']['options']['ENGINE'] = 'thumbor.engines.pil'
 # at https://github.com/globocom/thumbor/wiki
 default['thumbor']['options']['DETECTORS'] = []
 
+# disabled as redis queued redis detector is not
+# configured by default
 # Redis parameters for queued detectors
-default['thumbor']['options']['REDIS_QUEUE_SERVER_HOST'] = 'localhost'
-default['thumbor']['options']['REDIS_QUEUE_SERVER_PORT'] = 6379
-default['thumbor']['options']['REDIS_QUEUE_SERVER_DB'] = 0
-default['thumbor']['options']['REDIS_QUEUE_SERVER_PASSWORD'] = 'None'
+#default['thumbor']['options']['REDIS_QUEUE_SERVER_HOST'] = 'localhost'
+#default['thumbor']['options']['REDIS_QUEUE_SERVER_PORT'] = 6379
+#default['thumbor']['options']['REDIS_QUEUE_SERVER_DB'] = 0
+#default['thumbor']['options']['REDIS_QUEUE_SERVER_PASSWORD'] = 'None'
 
 default['thumbor']['options']['AUTO_WEBP'] = 'True'
 

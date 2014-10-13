@@ -71,6 +71,11 @@ required_packages.each do |pkg|
   package pkg
 end
 
+# install dependency pip packages
+python_pip 'remotecv'
+
+python_pip 'graphicsmagick-engine'
+
 # install thumbor
 case node['thumbor']['install_method']
 when 'pip'
@@ -93,11 +98,5 @@ when 'package'
 else
   fail "invalid install_method #{node['thumbor']['install_method']}, valid are pip package"
 end
-
-# install dependency pip packages
-
-python_pip 'remotecv'
-
-python_pip 'graphicsmagick-engine'
 
 python_pip 'git+git://github.com/zanui/thumbor_aws.git@webp#egg=thumbor_aws'

@@ -19,6 +19,7 @@ server {
     proxy_read_timeout <%= @proxy_read_timeout %>;
 
     merge_slashes off;
+    rewrite (.+)http:/([^/].*) $1http://$2 break;
 
     location / {
         <% if @proxy_cache_enabled %>

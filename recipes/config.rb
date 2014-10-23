@@ -24,6 +24,20 @@ user_ulimit node['thumbor']['user'] do
   memory_limit node['thumbor']['limits']['memlock']
 end
 
+# thumbor upstart log directory
+directory node['thumbor']['log_dir'] do
+  recursive true
+  notifies :restart, 'service[thumbor]', :delayed if node['thumbor']['notify_restart']
+end
+
+# may require different logrotate for different init_style
+template '/etc/logrotate.d/thumbor' do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  source 'thumbor.logrotate.erb'
+end
+
 # thumbor storage directory
 directory node['thumbor']['options']['FILE_STORAGE_ROOT_PATH'] do
   owner node['thumbor']['user']

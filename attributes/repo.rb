@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: thumbor
-# Attribute:: redis
+# Attribute:: repo
 #
 # Copyright 2014, Virender Khatri
 #
@@ -17,7 +17,6 @@
 # limitations under the License.
 #
 
-default['thumbor']['apt']['thumbor']['repo'] = 'thumbor'
 default['thumbor']['apt']['thumbor']['uri'] = 'http://ppa.launchpad.net/thumbor/ppa/ubuntu'
 default['thumbor']['apt']['thumbor']['distribution'] = node['lsb']['codename']
 default['thumbor']['apt']['thumbor']['keyserver'] = 'keyserver.ubuntu.com'
@@ -26,7 +25,6 @@ default['thumbor']['apt']['thumbor']['key'] = '68DFB11CCBEC8F27' # 'C6C3D73D1225
 default['thumbor']['apt']['thumbor']['deb_src'] = false
 default['thumbor']['apt']['thumbor']['action'] = 'add'
 
-default['thumbor']['apt']['multiverse']['repo'] = 'multiverse'
 default['thumbor']['apt']['multiverse']['uri'] = 'http://archive.ubuntu.com/ubuntu'
 default['thumbor']['apt']['multiverse']['distribution'] = node['lsb']['codename']
 default['thumbor']['apt']['multiverse']['keyserver'] = 'keyserver.ubuntu.com'

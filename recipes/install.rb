@@ -21,7 +21,7 @@ case node['platform_family']
 when 'debian'
 
   # apt repository configuration
-  apt_repository node['thumbor']['apt']['thumbor']['repo'] do
+  apt_repository 'thumbor' do
     uri node['thumbor']['apt']['thumbor']['uri']
     distribution node['thumbor']['apt']['thumbor']['distribution']
     components node['thumbor']['apt']['thumbor']['components']
@@ -31,7 +31,7 @@ when 'debian'
     action node['thumbor']['apt']['thumbor']['action']
   end
 
-  apt_repository node['thumbor']['apt']['multiverse']['repo'] do
+  apt_repository 'multiverse' do
     uri node['thumbor']['apt']['multiverse']['uri']
     distribution node['thumbor']['apt']['multiverse']['distribution']
     components node['thumbor']['apt']['multiverse']['components']
@@ -59,7 +59,7 @@ when 'debian'
                          libdc1394-22-dev libdc1394-22 libdc1394-utils swig libjpeg-progs libjpeg-dev libgtk2.0-0 libgtk2.0-dev
                          gtk2-engines-pixbuf python-numpy python-opencv libgraphicsmagick++1-dev libgraphicsmagick++3
                          libboost-python-dev tree webp libwebp-dev python-dateutil libqt4-dev libswscale-dev libtbb-dev
-                         libv4l-dev v4l-utils x264)
+                         libv4l-dev v4l-utils x264 jpeginfo)
 
 when 'rhel'
   # TODO: add yum packages

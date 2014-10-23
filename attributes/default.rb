@@ -36,6 +36,8 @@ default['thumbor']['proxy'] = 'nginx' # options: nginx, haproxy(experimental)
 # notify restart to service
 default['thumbor']['notify_restart'] = true
 
+default['thumbor']['log_dir'] = '/var/log/thumbor'
+
 # setup local redis server
 default['thumbor']['setup_redis']  = true
 

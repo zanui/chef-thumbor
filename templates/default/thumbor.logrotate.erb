@@ -1,0 +1,8 @@
+<%= node['thumbor']['upstart']['log_dir] -%>/*.log {
+        daily
+        missingok
+        rotate 7
+        compress
+        notifempty
+  nocreate
+}

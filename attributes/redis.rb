@@ -20,4 +20,15 @@
 # keeping redis configuration minimal.
 # modify attributes for cookbook redisio as per requirement
 
+# setup local redis server
+default['thumbor']['setup_redis']  = false
+
 node.default['redisio']['version'] = '2.8.17'
+
+# disabled as redis queued redis detector is not
+# configured by default
+# Redis parameters for queued detectors
+# default['thumbor']['options']['REDIS_QUEUE_SERVER_HOST'] = 'localhost'
+# default['thumbor']['options']['REDIS_QUEUE_SERVER_PORT'] = 6379
+# default['thumbor']['options']['REDIS_QUEUE_SERVER_DB'] = 0
+# default['thumbor']['options']['REDIS_QUEUE_SERVER_PASSWORD'] = 'None'

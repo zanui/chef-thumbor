@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 
-default['thumbor']['version'] = '4.5.3'
+default['thumbor']['version'] = '4.5.4'
 default['thumbor']['processes'] = node['cpu']['total']
 default['thumbor']['base_port'] = 9000
 default['thumbor']['key'] = 'testkey'
@@ -37,9 +37,6 @@ default['thumbor']['proxy'] = 'nginx' # options: nginx, haproxy(experimental)
 default['thumbor']['notify_restart'] = true
 
 default['thumbor']['log_dir'] = '/var/log/thumbor'
-
-# setup local redis server
-default['thumbor']['setup_redis']  = true
 
 # thumbor service user
 default['thumbor']['setup_user']  = true
@@ -133,14 +130,6 @@ default['thumbor']['options']['ENGINE'] = 'thumbor.engines.pil'
 # more about detectors can be found in thumbor's docs
 # at https://github.com/globocom/thumbor/wiki
 default['thumbor']['options']['DETECTORS'] = []
-
-# disabled as redis queued redis detector is not
-# configured by default
-# Redis parameters for queued detectors
-# default['thumbor']['options']['REDIS_QUEUE_SERVER_HOST'] = 'localhost'
-# default['thumbor']['options']['REDIS_QUEUE_SERVER_PORT'] = 6379
-# default['thumbor']['options']['REDIS_QUEUE_SERVER_DB'] = 0
-# default['thumbor']['options']['REDIS_QUEUE_SERVER_PASSWORD'] = 'None'
 
 default['thumbor']['options']['AUTO_WEBP'] = 'True'
 

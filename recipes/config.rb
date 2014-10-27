@@ -132,7 +132,7 @@ service 'thumbor' do
   else
     provider Chef::Provider::Service::Init
   end
-  supports :restart => true, :start => true, :stop => true, :reload => true
+  supports :restart => true, :start => true, :stop => true, :reload => true, :status => true
   service_name node['thumbor']['service_name']
   action [:enable, :start]
 end

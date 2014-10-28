@@ -1,4 +1,9 @@
 #! /bin/sh
+
+#
+# Managed by Chef
+#
+
 ### BEGIN INIT INFO
 # Provides:          thumbor
 # Required-Start:    $remote_fs $syslog
@@ -12,12 +17,12 @@
 
 
 PATH=/sbin:/usr/sbin:/bin:/usr/:/usr/local/bin:/usr/bin
-NAME=thumbor
+NAME=<%= node['thumbor']['service_name']%>
 
-conffile=/etc/thumbor.conf
-keyfile=/etc/thumbor.key
-ip=0.0.0.0
-port=8888
+conffile=<%= node['thumbor']['conf_file']%>
+keyfile=<%= node['thumbor']['key_file']%>
+ip=<%= node['thumbor']['listen_address']%>
+port=<%= node['thumbor']['base_port']%>
 
 DAEMON=`which thumbor`
 DAEMON_ARGS="-c ${conffile} -i ${ip} -k ${keyfile}"
@@ -33,7 +38,7 @@ USER=thumbor
 [ -r /etc/default/$NAME ] && . /etc/default/$NAME
 
 #Service must not be disabled
-if ! [ "$enabled" != "0" ] || [ "$force_start" = "1" ]; then 
+if ! [ "$enabled" != "0" ] || [ "$force_start" = "1" ]; then
   echo "Thumbor service is desabled by /etc/default/$NAME"
   exit 0
 fi
@@ -66,7 +71,7 @@ do_stop()
       rm -f $i
     fi
   done
-  if [ "$ret" != 0 ]; then 
+  if [ "$ret" != 0 ]; then
     return 1
   fi
 }

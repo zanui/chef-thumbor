@@ -1,25 +1,30 @@
 description "Thumbor image manipulation service"
 
+start on runlevel [345]
 stop on stopped thumbor
 
 console log
 
+<% if node['thumbor']['upstart_respawn'] -%>
 respawn
 respawn limit 5 10
+<% end -%>
 umask 022
 
-setuid thumbor
-setgid thumbor
+setuid <%= node['thumbor']['user']%>
+setgid <%= node['thumbor']['group']%>
 
-env DAEMON=/usr/local/bin/thumbor
+env DAEMON=<%= node['thumbor']['binary']%>
 
-env conffile=/etc/thumbor.conf
-env keyfile=/etc/thumbor.key
-env ip=0.0.0.0
+env conffile=<%= node['thumbor']['conf_file']%>
+
+env keyfile=<%= node['thumbor']['key_file']%>
+
+env ip=<%= node['thumbor']['listen_address']%>
 
 #chdir /var/lib/thumbor
 chdir /usr/local/lib/python2.7/dist-packages/thumbor
 
 instance $p
 
-exec $DAEMON -c "${conffile}" -i "${ip}" -k "${keyfile}" -p "${p}"
+exec $DAEMON -c "${conffile}" -i "${ip}" -k "${keyfile}" -p "${p}" ><%= node['thumbor']['log_dir']%>/thumbor-$p.log 2>&1

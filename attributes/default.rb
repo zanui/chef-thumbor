@@ -15,30 +15,52 @@
 # limitations under the License.
 #
 
-default['nginx']['port'] = 80
-default['thumbor']['nginx']['port'] = 80
-default['thumbor']['nginx']['server_name'] = '_'
-default['thumbor']['nginx']['proxy_cache']['enabled'] = false
-default['thumbor']['nginx']['proxy_cache']['path'] = '/var/www/thumbor_cache'
-default['thumbor']['nginx']['proxy_cache']['key_zone'] = 'thumbor_cache'
-
-default['thumbor']['version'] = 'master'
-default['thumbor']['processes'] = 1
+default['thumbor']['version'] = '4.5.4'
+default['thumbor']['processes'] = node['cpu']['total']
 default['thumbor']['base_port'] = 9000
 default['thumbor']['key'] = 'testkey'
 default['thumbor']['queue']['type'] = 'redis'
 default['thumbor']['storage']['type'] = 'file'
 
+default['thumbor']['init_style'] = 'upstart' # options: upstart, initd # TODO: add runit
+default['thumbor']['service_name'] = 'thumbor'
+default['thumbor']['install_method'] = 'pip' # options: pip source package(package available only for debian os family)
+default['thumbor']['listen_address'] = '127.0.0.1'
+default['thumbor']['binary'] = '/usr/local/bin/thumbor'
+default['thumbor']['upstart_respawn'] = true
+default['thumbor']['conf_file'] = '/etc/thumbor.conf'
+default['thumbor']['key_file'] = '/etc/thumbor.key'
+
+default['thumbor']['proxy'] = 'nginx' # options: nginx, haproxy(experimental)
+
+# notify restart to service
+default['thumbor']['notify_restart'] = true
+
+default['thumbor']['log_dir'] = '/var/log/thumbor'
+
+# thumbor service user
+default['thumbor']['setup_user']  = true
+default['thumbor']['group']       = 'thumbor'
+default['thumbor']['user']       = 'thumbor'
+default['thumbor']['user_home']       = nil
+# Defining gid/uid might break cookbook run
+
+# thumbor process limits
+default['thumbor']['limits']['memlock']    = 'unlimited'
+default['thumbor']['limits']['nofile']     = 48_000
+default['thumbor']['limits']['nproc']      = 'unlimited'
+
+# configuration options:
+# https://github.com/thumbor/thumbor/wiki/Configuration
 default['thumbor']['options'] = {}
 
 # AWS CONFIG
-default['thumbor']['options']['AWS_ACCESS_KEY'] = 'XXXXXX'
-default['thumbor']['options']['AWS_SECRET_KEY'] = 'XXXXXX'
-default['thumbor']['options']['S3_ALLOWED_BUCKETS'] = 'zanui-thumbor'
-default['thumbor']['options']['STORAGE_BUCKET'] = 'zanui-thumbor'
-default['thumbor']['options']['S3_LOADER_BUCKET'] = 'zanui-thumbor'
-default['thumbor']['options']['RESULT_STORAGE_BUCKET'] = 'zanui-thumbor'
-default['thumbor']['options']['RESULT_STORAGE'] = 'thumbor_aws.result_storages.s3_storage'
+# default['thumbor']['options']['AWS_ACCESS_KEY'] = 'XXXXXX'
+# default['thumbor']['options']['AWS_SECRET_KEY'] = 'XXXXXX'
+# default['thumbor']['options']['S3_ALLOWED_BUCKETS'] = 'zanui-thumbor'
+# default['thumbor']['options']['STORAGE_BUCKET'] = 'zanui-thumbor'
+# default['thumbor']['options']['S3_LOADER_BUCKET'] = 'zanui-thumbor'
+# default['thumbor']['options']['RESULT_STORAGE_BUCKET'] = 'zanui-thumbor'
 
 # SQS SETTINGS
 # default['thumbor']['options']['SQS_QUEUE_KEY_ID'] = ''
@@ -68,15 +90,22 @@ default['thumbor']['options']['UPLOAD_ENABLED'] = 'False'
 # UPLOAD_PHOTO_STORAGE = 'thumbor.storages.file_storage'
 default['thumbor']['options']['UPLOAD_PHOTO_STORAGE'] = 'False'
 
+default['thumbor']['options']['RESULT_STORAGE'] = 'thumbor.result_storages.file_storage'
+
 # how to store the loaded images so we don't have to load
 # them again with the loader
 # STORAGE = 'thumbor.storages.no_storage'
 # STORAGE = 'thumbor.storages.file_storage'
 # STORAGE = 'thumbor.storages.mixed_storage'
-default['thumbor']['options']['STORAGE'] = 'thumbor_aws.storages.s3_storage'
+# https://github.com/thumbor/thumbor/wiki/Plugins
+#
+default['thumbor']['options']['STORAGE'] = 'thumbor.storages.file_storage'
 
 # root path of the file storage
 default['thumbor']['options']['FILE_STORAGE_ROOT_PATH'] = '/var/lib/thumbor/storage'
+
+# root path of result storage
+default['thumbor']['options']['RESULT_STORAGE_FILE_STORAGE_ROOT_PATH'] = '/var/lib/thumbor/result-storage'
 
 # If you want to cache results, use this options to specify how to cache it
 # Set Expiration seconds to ZERO if you want them not to expire.
@@ -102,13 +131,9 @@ default['thumbor']['options']['ENGINE'] = 'thumbor.engines.pil'
 # at https://github.com/globocom/thumbor/wiki
 default['thumbor']['options']['DETECTORS'] = []
 
-# Redis parameters for queued detectors
-default['thumbor']['options']['REDIS_QUEUE_SERVER_HOST'] = 'localhost'
-default['thumbor']['options']['REDIS_QUEUE_SERVER_PORT'] = 6379
-default['thumbor']['options']['REDIS_QUEUE_SERVER_DB'] = 0
-default['thumbor']['options']['REDIS_QUEUE_SERVER_PASSWORD'] = 'None'
-
 default['thumbor']['options']['AUTO_WEBP'] = 'True'
+
+default['thumbor']['options']['ALLOW_UNSAFE_URL'] = 'True'
 
 # if you use face detection this is the file that
 # OpenCV will use to find faces. The default should be

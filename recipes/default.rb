@@ -18,11 +18,18 @@
 # limitations under the License.
 #
 
-case node['platform_family']
-when 'rhel'
-when 'debian'
-  package 'webp'
-  package 'libwebp-dev'
-when 'mac_os_x'
-when 'windows'
+include_recipe 'python'
+include_recipe 'thumbor::user'
+include_recipe 'thumbor::install'
+case node['thumbor']['proxy']
+when 'nginx'
+  include_recipe 'thumbor::nginx'
+when 'haproxy'
+  # Experimental, not yet developed
+  include_recipe 'thumbor::haproxy'
+else
+  include_recipe 'thumbor::nginx'
 end
+include_recipe 'thumbor::redis'
+include_recipe 'thumbor::config'
+include_recipe 'thumbor::monit' if node['thumbor']['monit']['enable']

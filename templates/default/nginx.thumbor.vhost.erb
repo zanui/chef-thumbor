@@ -1,3 +1,7 @@
+#
+# Managed by Chef
+#
+
 upstream thumbor {
     <% (@base_port..@base_port + @instances - 1).each do |port| %>
     server 127.0.0.1:<%= port %>;
@@ -11,8 +15,11 @@ proxy_cache_path <%= @proxy_cache_path %> levels=1:2 keys_zone=<%= @proxy_cache_
 server {
     listen <%= @server_port %>;
     server_name <%= @server_name %>;
+    client_max_body_size <%= @client_max_body_size %>;
+    proxy_read_timeout <%= @proxy_read_timeout %>;
 
     merge_slashes off;
+    rewrite (.+)http:/([^/].*) $1http://$2 break;
 
     location / {
         <% if @proxy_cache_enabled %>

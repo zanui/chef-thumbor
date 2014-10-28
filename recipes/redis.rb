@@ -1,9 +1,8 @@
 #
 # Cookbook Name:: thumbor
-# Recipe:: default
+# Recipe:: redis
 #
-# Copyright 2013, Enrico Stahn <mail@enricostahn.com>
-# Copyright 2013, Zanui <engineering@zanui.com.au>
+# Copyright 2014, Virender Khatri
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,13 +17,7 @@
 # limitations under the License.
 #
 
-require 'spec_helper'
-
-describe 'thumbor::default' do
-  let(:chef_run) { ChefSpec::Runner.new(:log_level => :debug, :platform => 'debian', :version  => '7.0').converge(described_recipe) }
-
-  it 'installs webp' do
-    expect(chef_run).to install_package('webp')
-    expect(chef_run).to install_package('libwebp-dev')
-  end
+if node['thumbor']['setup_redis']
+  include_recipe 'redisio::install'
+  include_recipe 'redisio::enable'
 end

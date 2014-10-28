@@ -16,4 +16,3 @@
 #
 
 default['thumbor']['monit']['enable'] = false
-default['thumbor']['monit']['send_email_notification_to'] = false

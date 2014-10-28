@@ -26,6 +26,8 @@ end
 
 # thumbor upstart log directory
 directory node['thumbor']['log_dir'] do
+  owner node['thumbor']['user']
+  group node['thumbor']['group']
   recursive true
   notifies :restart, 'service[thumbor]', :delayed if node['thumbor']['notify_restart']
 end

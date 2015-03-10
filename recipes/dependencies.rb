@@ -1,7 +1,6 @@
 #
 # Cookbook Name:: thumbor
-# Recipe:: source
-# Description:: Installs thumbor from GitHub repository
+# Recipe:: dependencies
 #
 # Author:: Enrico Stahn <mail@enricostahn.com>
 #
@@ -20,4 +19,10 @@
 # limitations under the License.
 #
 
-python_pip node['thumbor']['source']
+node['thumbor']['package_dependencies'].each do |name|
+  package name
+end
+
+node['thumbor']['pip_dependencies'].each do |name|
+  python_pip name
+end

@@ -1,8 +1,4 @@
 #
-# Cookbook Name:: thumbor
-# Recipe:: source
-# Description:: Installs thumbor from GitHub repository
-#
 # Author:: Enrico Stahn <mail@enricostahn.com>
 #
 # Copyright 2012-2015, Zanui <engineering@zanui.com.au>
@@ -20,4 +16,25 @@
 # limitations under the License.
 #
 
-python_pip node['thumbor']['source']
+require 'spec_helper'
+
+# Ugly to place it here, but the only way to pass Rubocop for now.
+node = ::JSON.parse(File.read('/tmp/serverspec/node.json'))
+
+describe ppa('thumbor/ppa') do
+  if node['thumbor']['install_method'] == 'package'
+    it { should exist }
+    it { should be_enabled }
+  else
+    it { should_not exist }
+    it { should_not be_enabled }
+  end
+end
+
+describe package('thumbor') do
+  if node['thumbor']['install_method'] == 'package'
+    it { should be_installed }
+  else
+    it { should_not be_installed }
+  end
+end

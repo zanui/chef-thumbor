@@ -1,0 +1,11 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+# WARNING: This file is managed by Chef, any manual changes will be OVERWRITTEN.
+
+<% @options.each do |(key, value)| %>
+<% case value
+    when TrueClass, FalseClass %><%= key %> = <%= value ? 'True' : 'False' %>
+<% else %><%= key %> = <%= ['True', 'False', 'None'].include?(value) ? value : value.to_json %>
+<% end %>
+<% end %>

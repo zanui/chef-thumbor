@@ -1,7 +1,6 @@
 #
 # Cookbook Name:: thumbor
-# Recipe:: source
-# Description:: Installs thumbor from GitHub repository
+# Recipe:: redis
 #
 # Author:: Enrico Stahn <mail@enricostahn.com>
 #
@@ -20,4 +19,5 @@
 # limitations under the License.
 #
 
-python_pip node['thumbor']['source']
+include_recipe 'redisio'
+include_recipe 'redisio::enable'

@@ -1,0 +1,32 @@
+# WARNING: This file is managed by Chef, any manual changes will be OVERWRITTEN.
+
+description "Thumbor image manipulation service"
+
+stop on stopped thumbor
+
+console log
+
+respawn
+respawn limit 5 10
+umask 022
+
+setuid <%= @user %>
+setgid <%= @group %>
+
+limit nofile <%= @filehandle_limit %> <%= @filehandle_limit %>
+limit nproc <%= @process_limit %> <%= @process_limit %>
+limit memlock <%= @memory_limit %> <%= @memory_limit %>
+
+env DAEMON=<%= @binary %>
+
+env conffile=<%= @conf_file %>
+env keyfile=<%= @key_file %>
+env ip=<%= @listen_address %>
+
+env log_level=<%= @log_level %>
+
+chdir <%= @work_dir %>
+
+instance $p
+
+exec $DAEMON -c "${conffile}" -i "${ip}" -k "${keyfile}" -p "${p}" -l "${log_level}"

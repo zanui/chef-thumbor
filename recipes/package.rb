@@ -1,7 +1,6 @@
 #
 # Cookbook Name:: thumbor
-# Recipe:: source
-# Description:: Installs thumbor from GitHub repository
+# Recipe:: package
 #
 # Author:: Enrico Stahn <mail@enricostahn.com>
 #
@@ -20,4 +19,13 @@
 # limitations under the License.
 #
 
-python_pip node['thumbor']['source']
+include_recipe 'thumbor::repo'
+
+Chef::Log.info("Install package will ignore the thumbor version specified (#{node['thumbor']['version']}) use the latest available package.")
+
+package node['thumbor']['package_name'] do
+  action :install
+  # if !node['thumbor']['version'].empty?
+  #   version node['thumbor']['version']
+  # end
+end

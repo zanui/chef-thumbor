@@ -1,25 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'berkshelf',   '~> 2.0'
-gem 'chefspec',   '~> 3.0'
-gem 'fauxhai'
-gem 'foodcritic', '~> 3.0'
-gem 'rubocop',    '~> 0.15'
-gem 'rake'
-gem 'versionomy'
-
-group :integration do
-  gem 'test-kitchen'
-  gem 'kitchen-vagrant'
-  gem 'kitchen-docker'
-end
-
-group :test do
-  gem 'coveralls', require: false
-end
+gem 'berkshelf'
 
 group :development do
-  gem 'chef'
-  gem 'knife-spork', '~> 1.0.17'
-  gem 'knife-spec'
+  gem 'test-kitchen'
+  gem 'kitchen-vagrant'
+  gem 'guard'
+  gem 'guard-kitchen'
+  gem 'infrataster'
 end

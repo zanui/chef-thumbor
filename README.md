@@ -1,23 +1,34 @@
 thumbor Cookbook
 ================
-[![Coverage Status](https://coveralls.io/repos/zanui/chef-thumbor/badge.png)](https://coveralls.io/r/zanui/chef-thumbor)
-[![Build Status](https://travis-ci.org/zanui/chef-thumbor.png?branch=master)](https://travis-ci.org/zanui/chef-thumbor)
-[![wercker status](https://app.wercker.com/status/bbda18948d7ab5346ec3be8a1eaa472b/m "wercker status")](https://app.wercker.com/project/bykey/bbda18948d7ab5346ec3be8a1eaa472b)
 
-Installs thumbor from package OR source code and sets up configuration.
+Installs/configures [thumbor](https://github.com/thumbor/thumbor) - an open-source photo thumbnail service by globo.com
 
+> **NOTE**: This cookbook has been heavily refactored. Please read the CHANGELOG.
+
+Features
+------------
+* Install packages for engines `pil`, `opencv`, `graphicsmagick`, `gifsicle`
+* Install methods `package`, `source`, `pip`
+* Support image format WEBP
+* Support Storage AWS S3
+* ServerSpec/Infrataster Tests
 
 Requirements
 ------------
 
-#### packages
-- `apt` - thumbor needs toaster to brown your bagel.
+### Cookbooks
+- `apt` - Configures apt and apt services and LWRPs for managing apt repositories and preferences
+- `python` - Installs Python, pip and virtualenv.
+- `nginx` - Installs and configures nginx
+- `monit-ng` - Installs and configures monit
+- `redisio` - Installs/Configures redis
+
 
 Attributes
 ----------
+The list of attributes found in the documentation is just an overview of important attributes. Please look through the `attributes` directory in order to find attributes that may not be listed here.  
 
 #### thumbor::default
-`node['thumbor']` attributes:
 <table>
   <tr>
     <th>Key</th>
@@ -26,27 +37,18 @@ Attributes
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>processes</tt></td>
-    <td>Integer</td>
-    <td>Number of thumbor processes running in parallel</td>
-    <td><tt>4</tt></td>
-  </tr>
-  <tr>
-    <td><tt>base_port</tt></td>
-    <td>Integer</td>
-    <td>Base port used to generate the port thumbor processes listen on (e.g. 9000, 9001, ...)</td>
-    <td><tt>9000</tt></td>
+    <td><tt>['thumbor']['bacon']</tt></td>
+    <td>Boolean</td>
+    <td>whether to include bacon</td>
+    <td><tt>true</tt></td>
   </tr>
 </table>
-
-#### thumbor::source
-
-#### thumbor::monit
-
 
 Usage
 -----
 #### thumbor::default
+
+
 TODO: Write usage instructions for each cookbook.
 
 e.g.
@@ -61,39 +63,38 @@ Just include `thumbor` in your node's `run_list`:
 }
 ```
 
-#### AWS OpsWorks
-TODO: Write usage instructions
-
-
 Contributing
 ------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
 
-e.g.
 1. Fork the repository on Github
 2. Create a named feature branch (like `add_component_x`)
-3. Write you change
+3. Write your change
 4. Write tests for your change (if applicable)
 5. Run the tests, ensuring they all pass
 6. Submit a Pull Request using Github
 
+### Prerequisites
+
+- [ChefDK](http://downloads.getchef.com/chef-dk/ "ChefDK")
+- Recent RuboCop
+  
+  ```
+  chef gem install rubocop
+  ```
+
+### Testing
+
+Test changes using
+
+```
+chef exec rake
+chef exec kitchen verify
+```
+
 License and Authors
 -------------------
-- Author:: [Enrico Stahn](https://github.com/estahn) (<enrico.stahn@zanui.com.au>)
-- Author:: [Enrico Baioni](https://github.com/ebaioni) (<enrico.baioni@gmail.com>)
+Author:: Enrico Stahn (mail@enricostahn.com)
 
-```text
-Copyright:: 2013 Zanui, Internet Services Australia 3 Pty Limited
+Copyright 2015, Zanui
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-```
+See LICENSE for license details

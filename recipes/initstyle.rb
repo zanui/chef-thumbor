@@ -38,19 +38,19 @@ template '/etc/init/thumbor-worker.conf' do
   group 'root'
   mode '0644'
   variables(
-      upstart_respawn: node['thumbor']['upstart_respawn'],
-      user: node['thumbor']['user'],
-      group: node['thumbor']['group'],
-      work_dir: node['thumbor']['work_dir'],
-      binary: node['thumbor']['binary'],
-      key_file: node['thumbor']['key_file'],
-      conf_file: node['thumbor']['conf_file'],
-      log_dir: node['thumbor']['log_dir'],
-      listen_address: node['thumbor']['listen_address'],
-      log_level: node['thumbor']['log_level'],
-      filehandle_limit: node['thumbor']['limits']['nofile'],
-      process_limit: node['thumbor']['limits']['nproc'],
-      memory_limit: node['thumbor']['limits']['memlock']
+    upstart_respawn:  node['thumbor']['upstart_respawn'],
+    user:             node['thumbor']['user'],
+    group:            node['thumbor']['group'],
+    work_dir:         node['thumbor']['work_dir'],
+    binary:           node['thumbor']['binary'],
+    key_file:         node['thumbor']['key_file'],
+    conf_file:        node['thumbor']['conf_file'],
+    log_dir:          node['thumbor']['log_dir'],
+    listen_address:   node['thumbor']['listen_address'],
+    log_level:        node['thumbor']['log_level'],
+    filehandle_limit: node['thumbor']['limits']['nofile'],
+    process_limit:    node['thumbor']['limits']['nproc'],
+    memory_limit:     node['thumbor']['limits']['memlock']
   )
   notifies :restart, 'service[thumbor]'
   only_if { node['thumbor']['init_style'] == 'upstart' }
@@ -63,11 +63,11 @@ template node['thumbor']['service_config_file'] do
   mode '0644'
   notifies :restart, 'service[thumbor]'
   variables(
-      workers: node['thumbor']['workers'],
-      base_port: node['thumbor']['base_port'],
-      conf_file: node['thumbor']['conf_file'],
-      key_file: node['thumbor']['key_file'],
-      listen_address: node['thumbor']['listen_address']
+    workers:        node['thumbor']['workers'],
+    base_port:      node['thumbor']['base_port'],
+    conf_file:      node['thumbor']['conf_file'],
+    key_file:       node['thumbor']['key_file'],
+    listen_address: node['thumbor']['listen_address']
   )
   only_if { node['thumbor']['init_style'] == 'upstart' }
 end

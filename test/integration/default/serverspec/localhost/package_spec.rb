@@ -16,23 +16,25 @@
 # limitations under the License.
 #
 
-source 'https://rubygems.org'
+require 'spec_helper'
 
-gem 'rake'
+# Ugly to place it here, but the only way to pass Rubocop for now.
+node = ::JSON.parse(File.read('/tmp/serverspec/node.json'))
 
-group :test do
-  gem 'foodcritic'
-  gem 'rubocop'
-  gem 'serverspec'
-  gem 'infrataster'
+describe ppa('thumbor/ppa') do
+  if node['thumbor']['install_method'] == 'package'
+    it { should exist }
+    it { should be_enabled }
+  else
+    it { should_not exist }
+    it { should_not be_enabled }
+  end
 end
 
-group :integration do
-  gem 'berkshelf'
-  gem 'test-kitchen'
-  gem 'kitchen-vagrant'
-end
-
-group :releasing do
-  gem 'stove'
+describe package('thumbor') do
+  if node['thumbor']['install_method'] == 'package'
+    it { should be_installed }
+  else
+    it { should_not be_installed }
+  end
 end

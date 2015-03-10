@@ -1,4 +1,7 @@
 #
+# Cookbook Name:: thumbor
+# Recipe:: package
+#
 # Author:: Enrico Stahn <mail@enricostahn.com>
 #
 # Copyright 2012-2015, Zanui <engineering@zanui.com.au>
@@ -16,23 +19,13 @@
 # limitations under the License.
 #
 
-source 'https://rubygems.org'
+include_recipe 'thumbor::repo'
 
-gem 'rake'
+Chef::Log.info("Install package will ignore the thumbor version specified (#{node['thumbor']['version']}) use the latest available package.")
 
-group :test do
-  gem 'foodcritic'
-  gem 'rubocop'
-  gem 'serverspec'
-  gem 'infrataster'
-end
-
-group :integration do
-  gem 'berkshelf'
-  gem 'test-kitchen'
-  gem 'kitchen-vagrant'
-end
-
-group :releasing do
-  gem 'stove'
+package node['thumbor']['package_name'] do
+  action :install
+  # if !node['thumbor']['version'].empty?
+  #   version node['thumbor']['version']
+  # end
 end

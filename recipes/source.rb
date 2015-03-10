@@ -1,8 +1,11 @@
 #
 # Cookbook Name:: thumbor
 # Recipe:: source
+# Description:: Installs thumbor from GitHub repository
 #
-# Copyright 2013, Zanui <engineering@zanui.com.au>
+# Author:: Enrico Stahn <mail@enricostahn.com>
+#
+# Copyright 2012-2015, Zanui <engineering@zanui.com.au>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,3 +19,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+python_pip node['thumbor']['source']

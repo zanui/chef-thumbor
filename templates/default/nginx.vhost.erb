@@ -1,0 +1,45 @@
+# WARNING: This file is managed by Chef, any manual changes will be OVERWRITTEN.
+
+upstream thumbor {
+    <% (@base_port..@base_port + @workers - 1).each do |port| %>
+    server 127.0.0.1:<%= port %>;
+    <% end %>
+}
+
+<% if @proxy_cache_enabled %>
+proxy_cache_path <%= @proxy_cache_path %> levels=1:2 keys_zone=<%= @proxy_cache_key_zone %>:8m max_size=1000m inactive=60m;
+<% end %>
+
+server {
+    listen <%= @server_port %>;
+    server_name <%= @server_name %>;
+
+    client_max_body_size <%= @client_max_body_size %>;
+    proxy_read_timeout <%= @proxy_read_timeout %>;
+
+    default_type application/octet-stream;
+
+    merge_slashes off;
+
+    location / {
+        <% if @proxy_cache_enabled %>
+        # Thumbor Cache
+        # Avoid hitting thumbor when same URL is requested multiple times
+        proxy_cache <%= @proxy_cache_key_zone %>;
+
+        # Cache successful responses for <%= @proxy_cache_valid %>
+        proxy_cache_valid 200 302 <%= @proxy_cache_valid %>;
+
+        # Cache missing responses for 1 minute
+        proxy_cache_valid 404 30s;
+
+        # Tell client if response is from local cache
+        add_header X-Cache-Status $upstream_cache_status;
+        <% end %>
+        proxy_pass http://thumbor;
+    }
+
+    location = /favicon.ico {
+        return 204;
+    }
+}

@@ -1,21 +1,2 @@
-AllCops:
-  Include:
-    - Rakefile
-  Exclude:
-    - vendor/**/*
-    - test/foodcritic/**/*
-    - berks-cookbooks/**/*
-
-AlignParameters:
-  Enabled: false
-Encoding:
-  Enabled: false
-HashSyntax:
-  Enabled: false
 LineLength:
-  Enabled: false
-MethodLength:
-  Max: 30
-# OpsWorks will break when curly braces are not used in template variables
-BracesAroundHashParameters:
-  Enabled: false
+  Max: 500

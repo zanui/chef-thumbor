@@ -1,4 +1,7 @@
 #
+# Cookbook Name:: thumbor
+# Recipe:: dependencies
+#
 # Author:: Enrico Stahn <mail@enricostahn.com>
 #
 # Copyright 2012-2015, Zanui <engineering@zanui.com.au>
@@ -16,23 +19,10 @@
 # limitations under the License.
 #
 
-source 'https://rubygems.org'
-
-gem 'rake'
-
-group :test do
-  gem 'foodcritic'
-  gem 'rubocop'
-  gem 'serverspec'
-  gem 'infrataster'
+node['thumbor']['package_dependencies'].each do |name|
+  package name
 end
 
-group :integration do
-  gem 'berkshelf'
-  gem 'test-kitchen'
-  gem 'kitchen-vagrant'
-end
-
-group :releasing do
-  gem 'stove'
+node['thumbor']['pip_dependencies'].each do |name|
+  python_pip name
 end

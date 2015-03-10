@@ -1,4 +1,7 @@
 #
+# Cookbook Name:: thumbor
+# Recipe:: user
+#
 # Author:: Enrico Stahn <mail@enricostahn.com>
 #
 # Copyright 2012-2015, Zanui <engineering@zanui.com.au>
@@ -16,23 +19,5 @@
 # limitations under the License.
 #
 
-source 'https://rubygems.org'
-
-gem 'rake'
-
-group :test do
-  gem 'foodcritic'
-  gem 'rubocop'
-  gem 'serverspec'
-  gem 'infrataster'
-end
-
-group :integration do
-  gem 'berkshelf'
-  gem 'test-kitchen'
-  gem 'kitchen-vagrant'
-end
-
-group :releasing do
-  gem 'stove'
-end
+default['thumbor']['user']  = 'thumbor'
+default['thumbor']['group'] = 'thumbor'

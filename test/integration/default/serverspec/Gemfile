@@ -18,21 +18,5 @@
 
 source 'https://rubygems.org'
 
-gem 'rake'
-
-group :test do
-  gem 'foodcritic'
-  gem 'rubocop'
-  gem 'serverspec'
-  gem 'infrataster'
-end
-
-group :integration do
-  gem 'berkshelf'
-  gem 'test-kitchen'
-  gem 'kitchen-vagrant'
-end
-
-group :releasing do
-  gem 'stove'
-end
+gem 'infrataster'
+gem 'fastimage'

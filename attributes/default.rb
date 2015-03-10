@@ -38,8 +38,9 @@ default['thumbor']['result_storage'] = 'file'
 
 # Install method options:
 # - package: Install thumbor from the globocom package repository
-# - pip:  Install thumbor via pip (e.g. default source is GitHub)
-default['thumbor']['install_method'] = 'package'
+# - pip: Install thumbor via pip
+# - source: Install thumbor via pip and GitHub (e.g. default source is GitHub)
+default['thumbor']['install_method'] = 'pip'
 
 default['thumbor']['source'] = "git+git://github.com/globocom/thumbor.git@#{node['thumbor']['version']}"
 
@@ -55,6 +56,6 @@ default['thumbor']['proxy']['type'] = 'nginx'
 default['thumbor']['monit']['enable'] = true
 
 # Install/Configure queueing service
-# - redis (default)
-# - none
-default['thumbor']['queue']['type'] = 'redis'
+# - none (default)
+# - redis
+default['thumbor']['queue']['type'] = 'none'

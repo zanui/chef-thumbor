@@ -4,8 +4,6 @@ thumbor Cookbook
 [![Coverage Status](https://img.shields.io/coveralls/zanui/chef-thumbor.svg)](https://coveralls.io/r/zanui/chef-thumbor)
 [![Build Status](https://img.shields.io/travis/zanui/chef-thumbor.svg)](https://travis-ci.org/zanui/chef-thumbor)
 
-
-
 Installs/configures [thumbor](https://github.com/thumbor/thumbor) - an open-source photo thumbnail service by globo.com
 
 > **NOTE**: This cookbook has been heavily refactored. Please read the CHANGELOG.

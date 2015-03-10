@@ -16,29 +16,23 @@ platforms:
 attribute_defaults: &attribute_defaults
   thumbor:
     workers: 3
-    install_method: pip
 
 suites:
   - name: default
     run_list: thumbor::default
     attributes:
-      thumbor:
-        options:
-          # ENGINE: graphicsmagick_engine
-          ENGINE: thumbor.engines.pil
       <<: *attribute_defaults
   - name: thumbor-engines-opencv
     run_list: thumbor::default
     attributes:
       thumbor:
-        <<: *attribute_defaults
         options:
-          ENGINE: thumbor.engines.opencv
+          ENGINE: opencv_engine
+      <<: *attribute_defaults
   - name: thumbor-engines-graphicsmagick
-    run_list:
-      - recipe[thumbor::default]
+    run_list: thumbor::default
     attributes:
       thumbor:
-        <<: *attribute_defaults
         options:
-          ENGINE: thumbor.engines.graphicsmagick
+          ENGINE: graphicsmagick_engine
+      <<: *attribute_defaults

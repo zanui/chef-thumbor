@@ -21,3 +21,4 @@ tmp/
 vendor/
 coverage/
 .idea/
+berks-cookbooks/

@@ -1,5 +1,8 @@
 thumbor Cookbook
 ================
+[![Cookbook](https://img.shields.io/cookbook/v/thumbor.svg)](https://supermarket.chef.io/cookbooks/thumbor)
+[![Coverage Status](https://coveralls.io/repos/zanui/chef-thumbor/badge.png)](https://coveralls.io/r/zanui/chef-thumbor)
+[![Build Status](https://travis-ci.org/zanui/chef-thumbor.png?branch=master)](https://travis-ci.org/zanui/chef-thumbor)
 
 Installs/configures [thumbor](https://github.com/thumbor/thumbor) - an open-source photo thumbnail service by globo.com
 

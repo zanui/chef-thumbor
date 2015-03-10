@@ -1,9 +1,10 @@
+---
+sudo: false
+cache: bundler
 language: ruby
-bundler_args: --without integration development
+
 rvm:
-  - 1.9.3
-  - 2.0.0
-#before_script:
-#  - bundle exec berks install
+  - 2.1.4
+
 script:
-  - bundle exec rake unit
+  - bundle exec rake

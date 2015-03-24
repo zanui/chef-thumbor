@@ -15,6 +15,7 @@ Features
 * Support image format WEBP
 * Support Storage AWS S3
 * ServerSpec/Infrataster Tests
+* [thumbor Stack on AWS OpsWorks in 10 minutes](https://github.com/zanui/chef-thumbor/wiki/thumbor-Stack-on-AWS-OpsWorks-in-10-minutes)
 
 Requirements
 ------------

@@ -24,7 +24,7 @@ node.default['nginx']['default_site_enabled'] = false
 node.default['nginx']['worker_connections'] = '4096'
 
 # nginx thumbor vhost configuration
-default['thumbor']['nginx']['port'] = 81
+default['thumbor']['nginx']['port'] = 80
 default['thumbor']['nginx']['server_name'] = '_'
 default['thumbor']['nginx']['client_max_body_size'] = '10M'
 default['thumbor']['nginx']['proxy_read_timeout'] = '300'
